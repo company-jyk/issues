@@ -1,4 +1,7 @@
 @Issues = new Mongo.Collection "Issues"
+Issues.allow
+  insert: (userId)->
+    userId?
 
 Schemas.Issues = new SimpleSchema [
   "緩急":
@@ -29,7 +32,7 @@ Schemas.Issues = new SimpleSchema [
   "問題描述":
     type: String
     label: '問題描述'
-    min: 4
+    min: 2
     max: 180
 
 
@@ -37,13 +40,6 @@ Schemas.Issues = new SimpleSchema [
     type: String
     label: '備註'
     max:100
-
-  "提交日期":
-    type: Date
-    label: '提交日期'
-    autoValue: ->
-      if this.isInsert
-        return new Date()
 
   "提交者":
     type: String
@@ -56,6 +52,14 @@ Schemas.Issues = new SimpleSchema [
         _.map Meteor.users.find().fetch(), (user)->
           label: user.emails[0].address
           value: user._id
+
+  "提交日期":
+    type: Date
+    label: '提交日期'
+    autoValue: ->
+      if this.isInsert
+        return new Date()
+
 
 
 ]
@@ -97,7 +101,7 @@ AdminConfig.collections.Issues = {
 if Meteor.isClient
   Meteor.subscribe "issuesChannel"
   Template.home.helpers
-    fields:['狀態','一級目錄','二級目錄','詳細位置','問題描述','備註','提交日期']
+    fields:['狀態','一級目錄','二級目錄','詳細位置','問題描述','備註']
 
 if Meteor.isServer
   Meteor.publish "issuesChannel" , ()->
