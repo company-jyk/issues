@@ -20,7 +20,7 @@ if Meteor.isClient
 			e.preventDefault()
 			Meteor.loginWithPassword ($ '#li-username').val(),
 				($ '#li-password').val()
-				(err)-> console.log err
+				(err)-> console.log @, err
 
 		'click a': (e, t) ->
 			e.preventDefault()
