@@ -12,6 +12,11 @@ Schemas.Issues = new SimpleSchema [
     type: String
     allowedValues: ['未解決','待測試','解決','解決不了']
 
+  "用戶界面":
+    type: String
+    label: '用戶界面'
+    max:20
+
   "一級目錄":
     type: String
     label: '一級目錄'
@@ -75,6 +80,7 @@ AdminConfig.collections.Issues = {
   tableColumns: [
     {label: '緩急',name:'緩急'}
     {label:'狀態',name:'狀態'}
+    {label:'用戶界面',name:'用戶界面'}
     {label: '一級目錄', name:'一級目錄'}
     {label: '二級目錄', name:'二級目錄'}
     {label: '詳細位置', name:'詳細位置'} #模仿 提交者但不行?
