@@ -2,3 +2,5 @@ template(name='import')
   //input(type="file" id="files")
   h1 一次性導入已有數據
   button#import 導入已有數據
+
+  +reactiveTable(collection=OldIssues fields=fields)
