@@ -108,7 +108,7 @@ AdminConfig.collections.Issues = {
 if Meteor.isClient
   Meteor.subscribe "issuesChannel"
   Template.home.helpers
-    fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
+    fields:['狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
 
 if Meteor.isServer
   Meteor.publish "issuesChannel" , ()->
