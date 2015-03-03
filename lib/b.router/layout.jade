@@ -1,0 +1,15 @@
+template(name='layout')
+  .container
+    .row.clearfix
+      .col-md-12.column
+        +thenavbar
+        +errors
+        .row.clearfix
+          .col-md-12.column
+            if currentUser
+              +yield
+            else
+              +splash
+  //-
+    #main.row-fluid
+      +yield

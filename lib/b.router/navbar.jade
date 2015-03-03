@@ -1,0 +1,31 @@
+template(name='thenavbar')
+  //--
+  .navbar.navbar-default.navbar-fixed-top(role='navigation')
+    .container
+      .navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      button.btn.btn-default.btn-back.pull-left.hidden(type='button', onclick='history.back()')
+        i.fa.fa-lg.fa-chevron-left
+        span Back
+      button.btn.btn-default.btn-menu.pull-left.offcanvas-toggle(type='button')
+        i.fa.fa-lg.fa-bars
+        span Menu
+      a.navbar-brand(title='Customers v{{getAppVersion}}', href='/') Customers
+      .navbar-collapse.collapse
+        ul.nav.navbar-nav
+          li.active
+            a(href='/cardshome')
+              i.fa.fa-users
+              |               Cards
+          li
+            a(href='#')
+              i.fa.fa-building-o
+              |               Companies
+          li
+            a(href='/admin')
+              i.fa.fa-gears
+              |               Admin
