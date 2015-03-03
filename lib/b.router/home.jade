@@ -1,4 +1,5 @@
 template(name='home')
   +thenavbar
-  body
-    h1 hello #{AppName}
+  h1 #{AppName}
+  +reactiveTable(collection=Issues fields=fields)
+  +quickForm(collection="Issues" id="IssuesReport" type='insert')

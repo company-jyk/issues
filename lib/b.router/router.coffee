@@ -6,5 +6,4 @@ Router.configure
 Router.onBeforeAction 'loading' # show loading template while waiting for the action
 
 Router.map ->
-  @route 'home'
-  @route 'layout', '/'
+  @route 'home', path:'/'
