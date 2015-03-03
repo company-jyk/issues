@@ -1,0 +1,42 @@
+<template name= 'signup'>
+	<form>
+	<h1> 註冊 </h1>
+	<input type="text" id="su-email" placeholder='Email'>
+	<input type="text" id="su-username" placeholder='Username'>
+	<input type="password" id="su-password" placeholder='Password'>
+	<button> 註冊 </button> 或, <a href="#"><strion> 登錄 </strion></a>
+	</form>
+</template>
+<template name= 'login'>
+	<form>
+	<h1> 登錄 </h1>
+	<input type="text" id="li-username" placeholder='Username'>
+	<input type="password" id="li-password" placeholder='Password'>
+	<button> 登錄 </button> 或, <a href="#"><strong> 註冊 </strong></a>
+	</form>
+</template>
+<template name= 'logout'>
+	<form>
+	<h1> 註銷 </h1>
+	{{ currentUser.username}}
+	<button> 登出 </button>
+	</form>
+</template>
+
+<template name = 'signupLogin'>
+<div id="login">
+	{{#if loggingIn}}
+		<h1> 登錄 ... </h1>
+	{{else}}
+		{{#if currentUser}}
+			{{> logout}}
+		{{else}}
+			{{#if visable}}
+				{{> signup}}
+			{{else}}
+				{{> login}}
+			{{/if}}
+		{{/if}}
+	{{/if}}
+</div>
+</template>
