@@ -51,7 +51,23 @@ if Meteor.isClient
 
       for iss in parsed.data
         for k,v of iss
-          issue[k]=v
+          switch k
+            when '緩急' then
+              switch v
+                when '' then issue[k] = '待定'
+                when ' ' then issue[k] = '待定'
+                else  issue[k] = v
+            when '狀態' then
+              switch v
+                when '-' then issue[k] = '未解決'
+                when '=' then issue[k] = '待測試'
+                when '×' then issue[k] = '未解決'
+                when '' then issue[k] = '未解決'
+                when ' ' then issue[k] = '未解決'
+                else issue[k] = v
+            when '提交者' then  issue[k] = Meteor.userId()
+            when '提交日期' then  issue[k] = new Date()
+            else issue[k] = v
         OldIssues.insert issue
 
   Template.import.helpers
