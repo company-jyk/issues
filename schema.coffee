@@ -103,9 +103,20 @@ AdminConfig.collections.Issues = {
 
 
 if Meteor.isClient
+  Session.set 'update', false
   Meteor.subscribe "issuesChannel"
+
   Template.home.helpers
-    fields:['狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
+    update: -> Session.get 'update'
+    trobject: -> Session.get 'trobject'
+    fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
+
+  Template.home.events
+    'click .reactive-table tr': (event) ->
+        event.preventDefault();
+        #Session.set 'update', true
+        #Session.set 'trobject', this
+        #console.log this, Session.get 'update'
 
 if Meteor.isServer
   Meteor.publish "issuesChannel" , ()->
