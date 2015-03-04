@@ -7,4 +7,4 @@ Router.onBeforeAction 'loading' # show loading template while waiting for the ac
 
 Router.map ->
   @route 'home', path:'/'
-  @route 'import'
+  @route 'board'
