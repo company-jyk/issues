@@ -58,7 +58,7 @@ if Meteor.isClient
   Meteor.subscribe "BoardChannel"
 
   Template.board.helpers
-    fields: ['topic','內容','提交日期']
+    fields: ['topic','內容']
 
 if Meteor.isServer
   Meteor.publish "BoardChannel" , ()->

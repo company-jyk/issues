@@ -1,0 +1,9 @@
+template(name='discussion')
+  //input(type="file" id="files")
+  +thenavbar
+
+  h1 Discussion
+
+  h1 Discussion
+
+  +reactiveTable(collection=discussion fields=fields)

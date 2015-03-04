@@ -63,7 +63,12 @@ AdminConfig.collections.Discussion =
 
 if Meteor.isClient
   Meteor.subscribe "DiscussionChannel"
-
+  ###
+  Template.discussion.helpers
+    fields: ['主題', '內容', '備註', '提交日期']
+    discussion: Discussion
+  ###
+    
 if Meteor.isServer
   Meteor.publish "DiscussionChannel" , ()->
     Discussion.find()
