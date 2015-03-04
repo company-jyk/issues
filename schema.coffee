@@ -65,9 +65,6 @@ Schemas.Issues = new SimpleSchema [
     autoValue: ->
       if this.isInsert
         return new Date()
-
-
-
 ]
 
 
@@ -79,16 +76,16 @@ AdminConfig.collections.Issues = {
   #icon: 'pencil'
 
   tableColumns: [
-    {label: '緩急',name:'緩急'}
-    {label:'狀態',name:'狀態'}
-    {label:'用戶界面',name:'用戶界面'}
+    {label: '緩急', name:'緩急'}
+    {label:'狀態', name:'狀態'}
+    {label:'用戶界面', name:'用戶界面'}
     {label: '一級菜單', name:'一級菜單'}
     {label: '二級菜單', name:'二級菜單'}
     {label: '詳細位置', name:'詳細位置'} #模仿 提交者但不行?
-    {label: '問題描述',name:'問題描述'}
-    {label: '備註',name:'備註'}
-    {label: '提交日期',name:'提交日期'}
-    {label:'提交者',name:'提交者', collection: 'Users'}
+    {label: '問題描述', name:'問題描述'}
+    {label: '備註', name:'備註'}
+    {label: '提交日期', name:'提交日期'}
+    {label:'提交者', name:'提交者', collection: 'Users'}
   ]
   ###
 

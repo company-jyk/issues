@@ -1,6 +1,8 @@
 template(name='home')
   +thenavbar
+  
   h1 #{AppName}
+  
   h3 已發現問題表
   //-
     h4 舊表
@@ -9,4 +11,7 @@ template(name='home')
   +reactiveTable(collection=Issues fields=fields)
   h3 新問題報告
   h4 填報前請filter看是否已有人報錯;填表時,緩急選待定,狀態選未解決;提交時間和提交人自動生成不須填寫
+  if update
+    +quickForm(collection="Issues" object= this id="IssuesReport" type='update')
+
   +quickForm(collection="Issues" id="IssuesReport" type='insert')
