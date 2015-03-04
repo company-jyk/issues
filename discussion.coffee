@@ -17,6 +17,10 @@ Schemas.Discussion = new SimpleSchema [
       label: '內容'
       min: 2
       max: 580
+      autoform:
+        afFieldInput:
+          type: "textarea"
+          rows:5
 
 
     "備註":
@@ -68,7 +72,7 @@ if Meteor.isClient
     fields: ['主題', '內容', '備註', '提交日期']
     discussion: Discussion
   ###
-    
+
 if Meteor.isServer
   Meteor.publish "DiscussionChannel" , ()->
     Discussion.find()

@@ -39,7 +39,10 @@ Schemas.Issues = new SimpleSchema [
     label: '問題描述'
     min: 2
     max: 280
-
+    autoform:
+      afFieldInput:
+        type: "textarea"
+        rows: 5
 
   "備註":
     type: String

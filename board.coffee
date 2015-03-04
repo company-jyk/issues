@@ -18,6 +18,10 @@ Schemas.Board = new SimpleSchema [
       label: '內容'
       min: 2
       max: 580
+      autoform:
+        afFieldInput:
+          type: "textarea"
+          rows: 5
 
     "提交者":
       type: String
