@@ -47,17 +47,19 @@ if Meteor.isClient
         fastMode: undefined
 
       parsed = Papa.parse csv, config
-      issue = {}
 
+      issue = {}
       for iss in parsed.data
-        for k,v of iss
+        if iss['問題描述'] is '' then return
+        for k, v of iss
+
           switch k
-            when '緩急' then
+            when '緩急'
               switch v
                 when '' then issue[k] = '待定'
                 when ' ' then issue[k] = '待定'
                 else  issue[k] = v
-            when '狀態' then
+            when '狀態'
               switch v
                 when '-' then issue[k] = '未解決'
                 when '=' then issue[k] = '待測試'
@@ -65,10 +67,14 @@ if Meteor.isClient
                 when '' then issue[k] = '未解決'
                 when ' ' then issue[k] = '未解決'
                 else issue[k] = v
-            when '提交者' then  issue[k] = Meteor.userId()
-            when '提交日期' then  issue[k] = new Date()
+            when '提交者'
+              issue[k] = Meteor.userId()
+            when '提交日期'
+              issue[k] = new Date()
             else issue[k] = v
-        OldIssues.insert issue
+          console.log issue
+          OldIssues.insert issue
+          break
 
   Template.import.helpers
 
