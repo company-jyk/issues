@@ -3,6 +3,7 @@ OldIssues.allow
   insert: (userId)->
     userId?
 
+OldIssues.attachSchema Schemas.Issues
 
 AdminConfig.collections.OldIssues =
   label: 'OldIssues'
@@ -49,7 +50,9 @@ if Meteor.isClient
       issue = {}
 
       for iss in parsed.data
-        OldIssues.insert iss
+        for k,v of iss
+          issue[k]=v
+        OldIssues.insert issue
 
   Template.import.helpers
 
