@@ -9,7 +9,7 @@ Schemas.Board = new SimpleSchema [
     "topic":
       type: String
       label: 'topic'
-      min: 4
+      min: 2
       max: 28
       optional:true
 
