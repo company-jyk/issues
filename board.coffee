@@ -6,10 +6,11 @@ Board.allow
 Schemas.Board = new SimpleSchema [
 
 
-    "主題":
+    "topic":
       type: String
-      label: '主題'
-      max:80
+      label: 'topic'
+      min: 4
+      max: 28
       optional:true
 
     "內容":
@@ -47,7 +48,7 @@ AdminConfig.collections.Board =
   label: 'Board'
   #icon: 'pencil'
   tableColumns: [
-    {label: '主題',name:'主題'}
+    {label: 'topic',name:'topic'}
     {label:'內容',name:'內容'}
     {label: '提交日期',name:'提交日期'}
     {label:'提交者',name:'提交者', collection: 'Users'}
@@ -57,7 +58,7 @@ if Meteor.isClient
   Meteor.subscribe "BoardChannel"
 
   Template.board.helpers
-    fields: ['主題','內容']
+    fields: ['topic','內容','提交日期']
 
 if Meteor.isServer
   Meteor.publish "BoardChannel" , ()->
