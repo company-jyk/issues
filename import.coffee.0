@@ -4,7 +4,7 @@ OldIssues.allow
     userId?
 
 OldIssues.attachSchema Schemas.Issues
-
+###
 AdminConfig.collections.OldIssues =
   label: 'OldIssues'
   #icon: 'pencil'
@@ -20,7 +20,7 @@ AdminConfig.collections.OldIssues =
     {label: '提交日期',name:'提交日期'}
     {label:'提交者',name:'提交者', collection: 'Users'}
   ]
-
+###
 if Meteor.isClient
   Meteor.subscribe "oldIssuesChannel"
   Template.import.events
