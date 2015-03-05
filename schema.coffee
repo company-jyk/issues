@@ -117,7 +117,7 @@ if Meteor.isClient
     fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
 
   Template.issuesTable.helpers
-    fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
+    fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註','提交日期']#,'提交者']
 
   Template.issuesTable.events
     'click .reactive-table tr': (event) ->
