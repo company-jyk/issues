@@ -10,10 +10,14 @@ template(name='home')
     h4 新表
   +reactiveTable(collection=Issues fields=fields)
   if update
-    h4 編輯條目
-    +quickForm(collection="Issues" doc= trobject id="IssuesReport" type='update')
-
+    +updateIssue
+    
   h3 新問題報告
   h4 填報前請filter看是否已有人報錯;填表時,緩急選待定,狀態選未解決;提交時間和提交人自動生成不須填寫
   
-  +quickForm(collection="Issues" id="IssuesReport" type='insert')
+  +quickForm(collection="Issues" id="IssuesReport" type='insert'  omitFields="提交日期,提交者")
+
+template(name='updateIssue')
+  h4 編輯條目
+  .update
+    +quickForm(collection="Issues" doc=trobject id="IssueUpdat" type='update'  omitFields="提交日期,提交者")

@@ -2,6 +2,10 @@
 Issues.allow
   insert: (userId)->
     userId?
+  update: (userId)->
+    userId?
+    # Meteor.users.find(_id: userId).emails[0].address is 'yuki@yuki.com'
+
 
 Schemas.Issues = new SimpleSchema [
   "緩急":
@@ -54,7 +58,7 @@ Schemas.Issues = new SimpleSchema [
     type: String
     regEx: SimpleSchema.RegEx.Id
     autoValue: ->
-      if this.isInsert
+      if this.isInsert or this.isUpdate
         return Meteor.userId()
     autoform:
       options: ->
@@ -66,7 +70,7 @@ Schemas.Issues = new SimpleSchema [
     type: Date
     label: '提交日期'
     autoValue: ->
-      if this.isInsert
+      if this.isInsert or this.isUpdate
         return new Date()
 ]
 
@@ -111,15 +115,23 @@ if Meteor.isClient
 
   Template.home.helpers
     update: -> Session.get 'update'
-    trobject: -> Session.get 'trobject'
     fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
 
   Template.home.events
     'click .reactive-table tr': (event) ->
         event.preventDefault();
-        #Session.set 'update', true
-        #Session.set 'trobject', this
+        Session.set 'trobject', this
+        Session.set 'update', true
         #console.log this, Session.get 'update'
+
+  Template.updateIssue.helpers
+    trobject: -> Session.get 'trobject'
+
+  Template.updateIssue.events
+    'click button': ->
+      #console.log this.qfAutoFormContext.doc
+      Session.set 'update', false
+
 
 if Meteor.isServer
   Meteor.publish "issuesChannel" , ()->
