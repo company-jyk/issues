@@ -108,6 +108,7 @@ AdminConfig.collections.Issues = {
 if Meteor.isClient
   Session.set 'update', false
   Meteor.subscribe "issuesChannel"
+  Meteor.subscribe "userInfo"
 
   Template.issuesView.helpers
     fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
@@ -135,5 +136,10 @@ if Meteor.isClient
 
 
 if Meteor.isServer
-  Meteor.publish "issuesChannel" , ()->
+  Meteor.publish "issuesChannel" , ->
     Issues.find()
+  Meteor.publish "userInfo", ->
+    if @userId
+      return Meteor.users.find {}, fields: {'emails':1}
+    else
+      @ready
