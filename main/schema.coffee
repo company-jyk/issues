@@ -131,7 +131,7 @@ if Meteor.isClient
 
   Template.updateIssue.events
     'click button': ->
-      console.log 'updated', this.qfAutoFormContext.doc
+      #console.log 'updated', this.qfAutoFormContext.doc
       Session.set 'update', false
 
 

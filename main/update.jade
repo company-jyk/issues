@@ -20,5 +20,5 @@ template(name='issuesTable')
 template(name='updateIssue')
   h3 編輯條目
   .update
-    +quickForm(collection="Issues" doc=trobject id="IssueUpdat" type='update'  omitFields="提交日期,提交者")
+    +quickForm(collection="Issues" doc=trobject id="IssueUpdat" type='update' resetOnSuccess=false  omitFields="提交日期,提交者")
     //+quickForm(collection="Issues" doc=trobject id="IssueUpdat" type='update')
