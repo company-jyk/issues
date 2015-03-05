@@ -113,16 +113,21 @@ if Meteor.isClient
   Session.set 'update', false
   Meteor.subscribe "issuesChannel"
 
-  Template.home.helpers
-    update: -> Session.get 'update'
+  Template.issuesView.helpers
     fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
 
-  Template.home.events
+  Template.issuesTable.helpers
+    fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
+
+  Template.issuesTable.events
     'click .reactive-table tr': (event) ->
         event.preventDefault();
         Session.set 'trobject', this
         Session.set 'update', true
         #console.log this, Session.get 'update'
+
+  Template.update.helpers
+    update: -> Session.get 'update'
 
   Template.updateIssue.helpers
     trobject: -> Session.get 'trobject'

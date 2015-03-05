@@ -1,0 +1,25 @@
+template(name='update')
+  +thenavbar
+  
+  h1 #{AppName}
+  
+  h1 Update #{AppName}
+
+  if update
+    +updateIssue
+  
+  +issuesTable
+
+template(name='issuesTable')
+
+    h3 已發現問題表
+    //-
+      h4 舊表
+      +reactiveTable(collection=OldIssues fields=fields)
+      h4 新表
+    +reactiveTable(collection=Issues fields=fields)
+
+template(name='updateIssue')
+  h3 編輯條目
+  .update
+    +quickForm(collection="Issues" doc=trobject id="IssueUpdat" type='update'  omitFields="提交日期,提交者")
