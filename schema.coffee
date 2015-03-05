@@ -56,21 +56,17 @@ Schemas.Issues = new SimpleSchema [
 
   "提交者":
     type: String
+    label: '提交者'
     regEx: SimpleSchema.RegEx.Id
     autoValue: ->
-      if this.isInsert or this.isUpdate
+      if this.isInsert #or this.isUpdate
         return Meteor.userId()
-    autoform:
-      options: ->
-        _.map Meteor.users.find().fetch(), (user)->
-          label: user.emails[0].address
-          value: user._id
 
   "提交日期":
     type: Date
     label: '提交日期'
     autoValue: ->
-      if this.isInsert or this.isUpdate
+      if this.isInsert #or this.isUpdate
         return new Date()
 ]
 
@@ -117,7 +113,7 @@ if Meteor.isClient
     fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
 
   Template.issuesTable.helpers
-    fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註','提交日期']#,'提交者']
+    fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']#,'提交日期','提交者']
 
   Template.issuesTable.events
     'click .reactive-table tr': (event) ->
@@ -134,7 +130,7 @@ if Meteor.isClient
 
   Template.updateIssue.events
     'click button': ->
-      #console.log this.qfAutoFormContext.doc
+      console.log 'updated', this.qfAutoFormContext.doc
       Session.set 'update', false
 
 
