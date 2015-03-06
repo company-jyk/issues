@@ -111,7 +111,7 @@ if Meteor.isClient
   Meteor.subscribe "userInfo"
 
   Template.issuesView.helpers
-    fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']
+    fields:['用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註','提交日期']
 
   Template.issuesTable.helpers
     fields:['緩急','狀態','用戶界面','一級菜單','二級菜單','詳細位置','問題描述','備註']#,'提交日期','提交者']
